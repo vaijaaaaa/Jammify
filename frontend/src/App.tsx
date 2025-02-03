@@ -9,7 +9,10 @@ function App() {
     
     <header>
       <SignedOut>
-        <SignInButton />
+      <SignInButton >
+            <Button>Sign in</Button>
+        </SignInButton >
+
       </SignedOut>
       <SignedIn>
         <UserButton />

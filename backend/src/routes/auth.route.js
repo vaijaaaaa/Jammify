@@ -1,25 +1,8 @@
 import { Router } from "express";
+import { authCallback } from "../controller/auth.controller.js";
 
 const router = Router();
 
-router.post("/callback",async (req,res)=>{
-  try {
-    const {id, firstName, lastName, imageUrl} = req.body;
-
-    const user = await UserActivation.findOne({clerkId: id});
-
-    if(!user){
-        await UserActivation.create({
-            clerkId:id,
-            fullName: `${firstName} ${lastName}`,
-            imageUrl
-        })
-    }
-    res.send(200).json({success:true})
-  } catch (error) {
-    res.status(500).json({message:"Internal server error",error})
-  }
-
-})
+router.post("/callback",authCallback)
 
 export default router;

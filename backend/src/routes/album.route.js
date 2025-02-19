@@ -1,9 +1,11 @@
 import { Router } from "express";
+import { get } from "mongoose";
+import { getAlbumById } from "../controller/album.controller";
 
 const router = Router();
 
-router.get("/",(req,res)=>{
-    res.send("album route is being tested ")
-})
+router.get("/",getAlbums);
+router.get("/:albumId",getAlbumById);  
+
 
 export default router;
